@@ -1,0 +1,23 @@
+{
+  "name": "auditlog",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "M. van den Bent",
+  "description": "NodeJS auditlog for rabbitMQ.",
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.0"
+  },
+  "scripts": {
+    "start": "tsc && node dist/app.js",
+    "predev": "tsc",
+    "dev": "concurrently \"mongod\" \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
+    "devnomongo": "concurrently \"ng serve -pc proxy.conf.json --open\" \"tsc -w -p server\" \"nodemon dist/server/app.js\"",
+    "prod": "concurrently \"mongod\" \"ng build -aot -prod && tsc -p server && node dist/server/app.js\""
+  },
+  "private": true,
+  "dependencies": {
+    "@types/amqplib": "^0.5.8",
+    "amqplib": "^0.5.2"
+  }
+}
